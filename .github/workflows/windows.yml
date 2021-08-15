@@ -23,6 +23,7 @@ jobs:
           conan user
       - name: Run
         env:
+          CONAN_SKIP_CHECK_CREDENTIALS: True
           CONAN_BUILD_TYPES: ${{ matrix.config.buildType }}
           CONAN_VISUAL_VERSIONS: ${{ matrix.config.version }}
           CONAN_CMAKE_GENERATOR: Ninja

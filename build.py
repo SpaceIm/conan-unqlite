@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from bincrafters import build_template_default
 
 if __name__ == "__main__":
