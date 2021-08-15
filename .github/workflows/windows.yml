@@ -12,7 +12,7 @@ jobs:
           - { os: windows-2019, name: "VISUAL", version: "16", buildType: "Debug"   }
           - { os: windows-2019, name: "VISUAL", version: "16", buildType: "Release" }
         arch:
-        - { name: "x86_64"}
+          - { name: "x86_64"}
     name: ${{ matrix.config.name }} ${{ matrix.config.version }} ${{ matrix.config.buildType }}
     steps:
       - uses: actions/checkout@v2
@@ -25,10 +25,8 @@ jobs:
           conan user
       - name: Run
         env:
-          CONAN_REFERENCE: unqlite/1.1.9
-          CONAN_SYSREQUIRES_MODE: enabled
           CONAN_ARCHS: ${{ matrix.arch.name }}
-          CONAN_BUILD_TYPES: ${{ matrix.compiler.buildType }}
+          CONAN_BUILD_TYPES: ${{ matrix.config.buildType }}
           CONAN_VISUAL_VERSIONS: ${{ matrix.config.version }}
           CONAN_CMAKE_GENERATOR: Ninja
           CC: cl.exe
